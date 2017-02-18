@@ -1,0 +1,36 @@
+/* Tweet list
+------------------------------------*/
+ul.wolf-tweet-list li {
+	list-style-type:none!important;
+	margin-bottom: 1em;
+	margin-left: 0!important;
+	padding-left: 1.8em;
+	position: relative;
+}
+ul.wolf-tweet-list li:before{
+	content : "\201C";
+	font-size: 3.1em;
+	font-family: Georgia, serif;
+	opacity: 0.6;
+	position: absolute;
+	left:0;
+	top:0.2em;
+}
+
+.wolf-tweet-time a {
+display:inline-block; width:100%;
+opacity : 0.6;
+border:none!important; text-decoration:none!important;}
+
+/* Big Tweet
+------------------------------------*/
+.wolf-bigtweet-content{
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.wolf-bigtweet-content span.wolf-tweet-text{
+	font-size: 1.8em;
+	position: relative;
+}
+

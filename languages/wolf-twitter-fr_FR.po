@@ -1,0 +1,87 @@
+# Copyright (C) 2016 WolfThemes
+# This file is distributed under the same license as the Wolf Twitter package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Wolf Twitter 3.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wolf-twitter\n"
+"POT-Creation-Date: 2017-02-18 02:10+0100\n"
+"PO-Revision-Date: 2017-02-18 02:10+0100\n"
+"Last-Translator: WolfThemes <help@wolfthemes.com>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
+"_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
+"esc_html_x:1,2c\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ..\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: .git\n"
+"X-Poedit-SearchPathExcluded-1: dev\n"
+"X-Poedit-SearchPathExcluded-2: html\n"
+"X-Poedit-SearchPathExcluded-3: pack\n"
+
+#: inc/wolf-twitter-widget.php:39
+msgid "Display your latest tweets"
+msgstr "Affichez vos derniers tweets"
+
+#: inc/wolf-twitter-widget.php:63 inc/wolf-twitter-widget.php:109
+msgid "Twitter Feed"
+msgstr "Fil d’actualité Twitter"
+
+#: inc/wolf-twitter-widget.php:117
+msgid "Title"
+msgstr "Titre"
+
+#: inc/wolf-twitter-widget.php:121
+msgid "Your Twitter username"
+msgstr "Votre nom d’utilisateur Twitter"
+
+#: inc/wolf-twitter-widget.php:125
+msgid "Number of tweets"
+msgstr "Nombre de tweets"
+
+#: wolf-twitter.php:98 wolf-twitter.php:106
+msgid "Cheatin&#8217; huh?"
+msgstr "Alors on triche ?"
+
+#: wolf-twitter.php:161
+#, fuzzy, php-format
+msgid ""
+"Our Twitter feed is currently unavailable but you can visit our official "
+"twitter page  <a href=\"%1s\" target=\"_blank\">%2s</a>."
+msgstr ""
+"Notre flux Twitter est actuellement indisponible, mais vous pouvez visiter "
+"notre page twitter <a href=\"%1s\" target=\"_blank\">% 2 s</a>."
+
+#: wolf-twitter.php:252 wolf-twitter.php:271
+#, php-format
+msgid "about %s ago"
+msgstr "il y a %s"
+
+#~ msgid "about"
+#~ msgstr "il y a"
+
+#~ msgid "%s ago"
+#~ msgstr " "
+
+#~ msgid "Wolf Twitter"
+#~ msgstr "Wolf Twitter"
+
+#~ msgid "http://wolfthemes.com/plugin/wolf-twitter"
+#~ msgstr "http://wolfthemes.com/plugin/wolf-twitter"
+
+#~ msgid "A shortcode and a widget to display your twitter feed anywhere."
+#~ msgstr ""
+#~ "Un shortcode et un widget pour afficher votre flux twitter n'importe où."
+
+#~ msgid "WolfThemes"
+#~ msgstr "WolfThemes"
+
+#~ msgid "http://wolfthemes.com"
+#~ msgstr "http://wolfthemes.com"
