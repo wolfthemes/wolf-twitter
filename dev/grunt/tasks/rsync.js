@@ -1,5 +1,5 @@
 module.exports = {
-	
+
 	options: {
 		args: ["--verbose", "--chmod=Du=rwx,Dg=rx,Do=rx,Fu=rw,Fg=r,Fo=r"],
 		recursive: true
