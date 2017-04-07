@@ -15,7 +15,7 @@
  * @package %PACKAGENAME%
  * @category Core
  * @author %AUTHOR%
- * 
+ *
  * Being a free product, this plugin is distributed as-is without official support.
  * Verified customers however, who have purchased a premium theme
  * at https://themeforest.net/user/Wolf-Themes/portfolio?ref=Wolf-Themes
@@ -192,7 +192,7 @@ class Wolf_Twitter {
 		$data = null;
 		$trans_key = 'wolf_twitter_'.$username;
 		$url = "https://twitter.wolfthemes.com/username/$username";
-		
+
 		// delete_transient( $trans_key );
 
 		$cache_duration = ceil( $this->cache_duration_hour * 3600 );
@@ -288,10 +288,10 @@ class Wolf_Twitter {
 	 * @param string $text
 	 * @return string $text
 	 */
-	public function  twitter_to_link( $text ) {
+	public function twitter_to_link( $text ) {
 
 		// Match URLs
-		$text = preg_replace( '/(^|[^=\"\/])\b((?:\w+:\/\/|www\.)[^\s<]+)((?:\W+|\b)(?:[\s<]|$))/m', '<a href="$0" target="_blank">$0</a>', $text);
+		$text = preg_replace( '/(^|[^=\"\/])\b((?:\w+:\/\/|www\.)[^\s<]+)((?:\W+|\b)(?:[\s<]|$))/m', '<a href="$0" target="_blank">$0</a>', $text );
 
 		// Match @name
 		$text = preg_replace( '/(@)([a-zA-ZÀ-ú0-9\_]+)/', '<a href="https://twitter.com/$2" target="_blank">@$2</a>', $text);
@@ -319,12 +319,18 @@ class Wolf_Twitter {
 	 */
 	public function shortcode( $atts ) {
 
+		if ( class_exists( 'Vc_Manager' ) && function_exists( 'vc_map_get_attributes' ) ) {
+			$atts = vc_map_get_attributes( 'wolf_tweet', $atts );
+		}
+
 		extract( shortcode_atts( array(
 			'username' => '',
 			'type' => 'single',
 			'count' => 1,
 			'animation' => '', // for WPB
 			'animation_delay' => '', // for WPB
+			'css_animation' => '', // for WVC
+			'css_animation_delay' => '', // for WVC
 		), $atts ) );
 
 		$list = ( 'list' == $type ) ? true : false;
@@ -340,10 +346,29 @@ class Wolf_Twitter {
 		if ( $animation_delay && $animation ) {
 			$style .= 'animation-delay:' . absint( $animation_delay ) / 1000 . 's;-webkit-animation-delay:' . absint( $animation_delay ) / 1000 . 's;';
 		}
-		
-		$output .= '<div class="' . $class . '" style="' . $style . '">';
-		$output .= $this->twitter( $username, $count, $list, $animation, $animation );
+
+		$class .= $this->get_vc_css_animation( $css_animation );
+
+		$output .= '<div class="' . esc_attr( $class ) . '" style="' . esc_attr( $style ) . '">';
+		$output .= $this->twitter( $username, $count, $list );
 		$output .= '</div>';
+
+		return $output;
+	}
+
+	public function get_vc_css_animation( $css_animation ) {
+
+		if ( ! defined( 'WPB_VC_VERSION' ) ) {
+			return;
+		}
+
+		$output = '';
+
+		if ( '' !== $css_animation && 'none' !== $css_animation ) {
+			wp_enqueue_script( 'waypoints' );
+			wp_enqueue_style( 'animate-css' );
+			$output = ' wpb_animate_when_almost_visible wpb_' . $css_animation . ' ' . $css_animation;
+		}
 
 		return $output;
 	}
@@ -354,7 +379,6 @@ class Wolf_Twitter {
 	public function plugin_update() {
 
 		$plugin_data = get_plugin_data( __FILE__ );
-
 		$current_version = $plugin_data['Version'];
 		$plugin_slug = plugin_basename( dirname( __FILE__ ) );
 		$plugin_path = plugin_basename( __FILE__ );

@@ -1,3 +1,7 @@
+#### 7th April 2017 - Version 3.0.4.1
+
+* Tweak: VC integration (for theme to come that use custom VC version)
+
 #### 18th February 2017 - Version 3.0.3
 
 * Tweak: Improved translation and added pot file

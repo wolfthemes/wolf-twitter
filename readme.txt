@@ -3,7 +3,7 @@ Contributors: wolfthemes
 Tags: twitter
 Requires at least: 4.5
 Tested up to: 4.7.2
-Stable tag: 3.0.3
+Stable tag: 3.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,6 +18,10 @@ Being a free product, this plugin is distributed as-is without official support.
 Verified customers however, who have purchased a premium theme on [ThemeForest](http://themeforest.net/user/wolf-themes/portfolio?ref=wolf-themes) will have access to the [support forums](http://docs.wolfthemes.com).
 
 == Changelog ==
+
+#### 7th April 2017 - Version 3.0.4
+
+* Tweak: VC integration (for theme to come that use custom VC version)
 
 #### 18th February 2017 - Version 3.0.3
 
