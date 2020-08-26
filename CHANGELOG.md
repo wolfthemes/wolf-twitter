@@ -1,4 +1,4 @@
-#### 7th April 2017 - Version 3.0.4.1
+#### 7th April 2017 - Version 3.0.4.2
 
 * Tweak: VC integration (for theme to come that use custom VC version)
 

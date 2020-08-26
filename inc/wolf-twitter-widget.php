@@ -107,7 +107,7 @@ class Wolf_Twitter_Widget extends WP_Widget {
 			// Set up some default widget settings
 			$defaults = array(
 				'title' => esc_html__( 'Twitter Feed', '%TEXTDOMAIN%' ),
-				'username' => get_user_meta( get_current_user_id(), 'twitter', true ), 
+				'username' => get_user_meta( get_current_user_id(), 'twitter', true ),
 				'count' =>'3'
 			);
 			$instance = wp_parse_args( (array) $instance, $defaults );

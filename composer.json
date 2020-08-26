@@ -1,0 +1,16 @@
+{
+	"name": "wolfthemes/wolf-twitter",
+	"description": "A shortcode and a widget to display your twitter feed anywhere.",
+	"type": "wordpress-plugin",
+	"homepage": "https://github.com/wolfthemes/wolf-twitter",
+	"authors": [
+		{
+			"name": "WolfThemes",
+			"email": "contact@wolfthemes.com",
+			"homepage": "https://wolfthemes.com"
+		}
+	],
+	"require": {
+		"php": ">=5.6"
+	}
+}

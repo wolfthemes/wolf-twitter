@@ -16,22 +16,9 @@
  * @category Core
  * @author %AUTHOR%
  *
- * Being a free product, this plugin is distributed as-is without official support.
- * Verified customers however, who have purchased a premium theme
- * at https://themeforest.net/user/Wolf-Themes/portfolio?ref=Wolf-Themes
+ * Verified customers who have purchased a premium theme at https://wlfthm.es/tf/
  * will have access to support for this plugin in the forums
- * https://help.wolfthemes.com/
- *
- * Copyright (C) 2014 Constantin Saguin
- * This WordPress Plugin is a free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- * It is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * See https://www.gnu.org/licenses/gpl-3.0.html
+ * https://wlfthm.es/help/
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -88,22 +75,6 @@ class Wolf_Twitter {
 			self::$_instance = new self();
 		}
 		return self::$_instance;
-	}
-
-	/**
-	 * Cloning is forbidden.
-	 * @since 2.0.8
-	 */
-	public function __clone() {
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', '%TEXTDOMAIN%' ), '%VERSION%' );
-	}
-
-	/**
-	 * Unserializing instances of this class is forbidden.
-	 * @since 2.0.8
-	 */
-	public function __wakeup() {
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', '%TEXTDOMAIN%' ), '%VERSION%' );
 	}
 
 	/**
@@ -291,13 +262,13 @@ class Wolf_Twitter {
 	public function twitter_to_link( $text ) {
 
 		// Match URLs
-		$text = preg_replace( '/(^|[^=\"\/])\b((?:\w+:\/\/|www\.)[^\s<]+)((?:\W+|\b)(?:[\s<]|$))/m', '<a href="$0" target="_blank">$0</a>', $text );
+		$text = preg_replace( '/(^|[^=\"\/])\b((?:\w+:\/\/|www\.)[^\s<]+)((?:\W+|\b)(?:[\s<]|$))/m', '<a class="wolf-tweet-link" href="$0" target="_blank">$0</a>', $text );
 
 		// Match @name
-		$text = preg_replace( '/(@)([a-zA-ZÀ-ú0-9\_]+)/', '<a href="https://twitter.com/$2" target="_blank">@$2</a>', $text);
+		$text = preg_replace( '/(@)([a-zA-ZÀ-ú0-9\_]+)/', '<a class="wolf-tweet-link" href="https://twitter.com/$2" target="_blank">@$2</a>', $text);
 
 		// Match #hashtag
-		$text = preg_replace( '/(#)([a-zA-ZÀ-ú0-9\_]+)/', '<a href="https://twitter.com/search/?q=$2" target="_blank">#$2</a>', $text);
+		$text = preg_replace( '/(#)([a-zA-ZÀ-ú0-9\_]+)/', '<a class="wolf-tweet-link" href="https://twitter.com/search/?q=$2" target="_blank">#$2</a>', $text);
 
 		return $text;
 	}
@@ -320,7 +291,7 @@ class Wolf_Twitter {
 	public function shortcode( $atts ) {
 
 		if ( class_exists( 'Vc_Manager' ) && function_exists( 'vc_map_get_attributes' ) ) {
-			$atts = vc_map_get_attributes( 'wolf_tweet', $atts );
+			//$atts = vc_map_get_attributes( 'wolf_tweet', $atts );
 		}
 
 		extract( shortcode_atts( array(
@@ -378,17 +349,27 @@ class Wolf_Twitter {
 	 */
 	public function plugin_update() {
 
-		$plugin_data = get_plugin_data( __FILE__ );
-		$current_version = $plugin_data['Version'];
-		$plugin_slug = plugin_basename( dirname( __FILE__ ) );
-		$plugin_path = plugin_basename( __FILE__ );
-		$remote_path = $this->update_url . '/' . $plugin_slug;
-
-		if ( ! class_exists( 'Wolf_WP_Update' ) ) {
-			include_once( 'class/class-wp-update.php');
+		if ( ! class_exists( 'WP_GitHub_Updater' ) ) {
+			include_once 'inc/admin/updater.php';
 		}
 
-		new Wolf_WP_Update( $current_version, $remote_path, $plugin_path );
+		$repo = 'wolfthemes/wolf-twitter';
+
+		$config = array(
+			'slug' => plugin_basename( __FILE__ ),
+			'proper_folder_name' => 'wolf-twitter',
+			'api_url' => 'https://api.github.com/repos/' . $repo . '',
+			'raw_url' => 'https://raw.github.com/' . $repo . '/master/',
+			'github_url' => 'https://github.com/' . $repo . '',
+			'zip_url' => 'https://github.com/' . $repo . '/archive/master.zip',
+			'sslverify' => true,
+			'requires' => '5.0',
+			'tested' => '5.5',
+			'readme' => 'README.md',
+			'access_token' => '',
+		);
+
+		new WP_GitHub_Updater( $config );
 	}
 
 } // end class
