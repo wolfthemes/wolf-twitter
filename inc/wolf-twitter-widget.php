@@ -4,7 +4,7 @@
  *
  * Displays ticket categories widget
  *
- * @author %AUTHOR%
+ * @author WolfThemes
  * @category Widgets
  * @extends WP_Widget
  */
@@ -36,7 +36,7 @@ class Wolf_Twitter_Widget extends WP_Widget {
 
 		/* Widget variable settings. */
 		$this->wolf_widget_name 	= 'Twitter';
-		$this->wolf_widget_description = esc_html__( 'Display your latest tweets', '%TEXTDOMAIN%' );
+		$this->wolf_widget_description = esc_html__( 'Display your latest tweets', 'wolf-twitter' );
 		$this->wolf_widget_cssclass 	= 'wolf-twitter-widget';
 		$this->wolf_widget_idbase 	= 'wolf-twitter-widget';
 
@@ -60,7 +60,7 @@ class Wolf_Twitter_Widget extends WP_Widget {
 
 		extract($args);
 
-		$title = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : esc_html__( 'Twitter Feed', '%TEXTDOMAIN%' );
+		$title = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : esc_html__( 'Twitter Feed', 'wolf-twitter' );
 		$title = apply_filters( 'widget_title', $title );
 		$username = isset( $instance['username'] ) ? esc_attr( $instance['username'] ) : get_user_meta( get_current_user_id(), 'twitter', true );
 		$count = isset( $instance['count'] ) ? absint( $instance['count'] ) : 3;
@@ -106,7 +106,7 @@ class Wolf_Twitter_Widget extends WP_Widget {
 
 			// Set up some default widget settings
 			$defaults = array(
-				'title' => esc_html__( 'Twitter Feed', '%TEXTDOMAIN%' ),
+				'title' => esc_html__( 'Twitter Feed', 'wolf-twitter' ),
 				'username' => get_user_meta( get_current_user_id(), 'twitter', true ),
 				'count' =>'3'
 			);
@@ -114,15 +114,15 @@ class Wolf_Twitter_Widget extends WP_Widget {
 
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title', '%TEXTDOMAIN%' ); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title', 'wolf-twitter' ); ?>:</label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>">
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'username' ); ?>"><?php esc_html_e( 'Your Twitter username', '%TEXTDOMAIN%' ); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'username' ); ?>"><?php esc_html_e( 'Your Twitter username', 'wolf-twitter' ); ?>:</label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'username' ); ?>" name="<?php echo $this->get_field_name( 'username' ); ?>" value="<?php echo $instance['username']; ?>">
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'count' ); ?>"><?php esc_html_e( 'Number of tweets', '%TEXTDOMAIN%' ); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'count' ); ?>"><?php esc_html_e( 'Number of tweets', 'wolf-twitter' ); ?>:</label>
 			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'count' ); ?>" name="<?php echo $this->get_field_name( 'count' ); ?>" value="<?php echo $instance['count']; ?>">
 		</p>
 		<?php

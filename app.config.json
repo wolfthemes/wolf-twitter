@@ -1,8 +1,8 @@
 {
-	"version": "3.0.4.2",
-	"updated": "2017-06-12",
+	"version": "3.0.5",
+	"updated": "2020-08-26",
 	"slug": "wolf-twitter",
-	"name": "Wolf Twitter",
+	"name": "Twitter Feed",
 	"packagename": "WolfTwitter",
 	"created": "2013-03-04",
 	"createdNice": "4th march 2013",

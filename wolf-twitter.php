@@ -1,20 +1,20 @@
 <?php
 /**
- * Plugin Name: Wolf Twitter
- * Plugin URI: %LINK%
- * Description: %DESCRIPTION%
- * Version: %VERSION%
- * Author: %AUTHOR%
- * Author URI: %AUTHORURI%
- * Requires at least: %REQUIRES%
- * Tested up to: %TESTED%
+ * Plugin Name: Twitter Feed
+ * Plugin URI: http://wolfthemes.com/plugin/wolf-twitter/
+ * Description: A shortcode and a widget to display your twitter feed anywhere.
+ * Version: 3.0.5
+ * Author: WolfThemes
+ * Author URI: http://wolfthemes.com
+ * Requires at least: 5.0
+ * Tested up to: 5.5
  *
- * Text Domain: %TEXTDOMAIN%
+ * Text Domain: wolf-twitter
  * Domain Path: /languages/
  *
- * @package %PACKAGENAME%
+ * @package WolfTwitter
  * @category Core
- * @author %AUTHOR%
+ * @author WolfThemes
  *
  * Verified customers who have purchased a premium theme at https://wlfthm.es/tf/
  * will have access to support for this plugin in the forums
@@ -28,20 +28,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'Wolf_Twitter' ) ) :
 
 /**
- * Main %NAME% Class
+ * Main Twitter Feed Class
  *
  * @class Wolf_Page_Builder
- * @version %VERSION%
+ * @version 3.0.5
  */
 class Wolf_Twitter {
 
 	/**
 	 * @var string
 	 */
-	public $version = '%VERSION%';
+	public $version = '3.0.5';
 
 	/**
-	 * @var %NAME% The single instance of the class
+	 * @var Twitter Feed The single instance of the class
 	 */
 	protected static $_instance = null;
 
@@ -53,7 +53,7 @@ class Wolf_Twitter {
 	/**
 	 * @var the support forum URL
 	 */
-	private $support_url = 'https://docs.wolfthemes.com/';
+	private $support_url = 'https://wlfthm.es/help';
 
 	/**
 	 * @var string
@@ -61,14 +61,14 @@ class Wolf_Twitter {
 	var $cache_duration_hour = 1; // cache duration in hour (can be decimal e.g : 1.5)
 
 	/**
-	 * Main %NAME% Instance
+	 * Main Twitter Feed Instance
 	 *
-	 * Ensures only one instance of %NAME% is loaded or can be loaded.
+	 * Ensures only one instance of Twitter Feed is loaded or can be loaded.
 	 *
 	 * @since 2.0.8
 	 * @static
 	 * @see WT()
-	 * @return %NAME% - Main instance
+	 * @return Twitter Feed - Main instance
 	 */
 	public static function instance() {
 		if ( is_null( self::$_instance ) ) {
@@ -105,8 +105,8 @@ class Wolf_Twitter {
 	 */
 	public function plugin_textdomain() {
 
-		$domain = '%TEXTDOMAIN%';
-		$locale = apply_filters( '%TEXTDOMAIN%', get_locale(), $domain );
+		$domain = 'wolf-twitter';
+		$locale = apply_filters( 'wolf-twitter', get_locale(), $domain );
 		load_textdomain( $domain, WP_LANG_DIR.'/'.$domain.'/'.$domain.'-'.$locale.'.mo' );
 		load_plugin_textdomain( $domain, FALSE, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	}
@@ -129,7 +129,7 @@ class Wolf_Twitter {
 
 		$error_message = sprintf(
 				wp_kses(
-					__( 'Our Twitter feed is currently unavailable but you can visit our official twitter page  <a href="%1s" target="_blank">%2s</a>.', '%TEXTDOMAIN%' ),
+					__( 'Our Twitter feed is currently unavailable but you can visit our official twitter page  <a href="%1s" target="_blank">%2s</a>.', 'wolf-twitter' ),
 					array(
 						'a' => array(
 							'href' => array(),
@@ -220,7 +220,7 @@ class Wolf_Twitter {
 							$tweet_link = "https://twitter.com/$username/statuses/$id";
 
 							$tweet .= "<li>";
-							$tweet .= "<span class=\"wolf-tweet-time\"><a href=\"$tweet_link\" target=\"_blank\">". sprintf( __( 'about %s ago', '%TEXTDOMAIN%' ), $this->twitter_time_ago( $created ) ) ."</a></span>";
+							$tweet .= "<span class=\"wolf-tweet-time\"><a href=\"$tweet_link\" target=\"_blank\">". sprintf( __( 'about %s ago', 'wolf-twitter' ), $this->twitter_time_ago( $created ) ) ."</a></span>";
 							$tweet .= "<span class=\"wolf-tweet-text\">".$this->twitter_to_link( $content )."</span>";
 							$tweet .= "</li>";
 						}
@@ -239,7 +239,7 @@ class Wolf_Twitter {
 					$tweet_link = "https://twitter.com/$username/statuses/$id";
 
 					$tweet .= "<div class=\"wolf-bigtweet-content\"><span class=\"wolf-tweet-text\">". $this->twitter_to_link( $content )."</span>";
-					$tweet .= "<br><span class=\"wolf-tweet-time_big\"><a href=\"$tweet_link\" target=\"_blank\">" . sprintf( __( 'about %s ago', '%TEXTDOMAIN%' ), $this->twitter_time_ago( $created ) ) ."</a>
+					$tweet .= "<br><span class=\"wolf-tweet-time_big\"><a href=\"$tweet_link\" target=\"_blank\">" . sprintf( __( 'about %s ago', 'wolf-twitter' ), $this->twitter_time_ago( $created ) ) ."</a>
 					<span class=\"wolf-tweet-separator\">|</span> <a href=\"https://twitter.com/$username/\" target=\"_blank\">@$username</a></span></div>";
 				} else {
 					$tweet = $this->twitter_error( $username, $list );
